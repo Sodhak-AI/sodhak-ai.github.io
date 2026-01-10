@@ -37,6 +37,29 @@ const services = [
   },
 ];
 
+const productFeatures = [
+  {
+    title: "Attack Suite Library",
+    description:
+      "600+ curated jailbreaks, injections, and data exfiltration tests refreshed weekly.",
+  },
+  {
+    title: "Scenario Orchestrator",
+    description:
+      "Run multi-turn, tool-aware attacks with guardrail variations and role-based prompts.",
+  },
+  {
+    title: "Findings Console",
+    description:
+      "Severity scoring, evidence capture, and remediation guidance in one workspace.",
+  },
+  {
+    title: "Retest Automation",
+    description:
+      "Trigger targeted retests, compare deltas, and verify fixes across releases.",
+  },
+];
+
 const approach = [
   {
     step: "01",
@@ -123,6 +146,7 @@ export default function App() {
         <div className="logo">Sodhak AI</div>
         <nav className="nav-links">
           <a href="#services">Coverage</a>
+          <a href="#product">Product</a>
           <a href="#approach">Method</a>
           <a href="#intel">Intel</a>
           <a href="#contact">Contact</a>
@@ -137,8 +161,9 @@ export default function App() {
           <span className="pill">LLM Red Teaming</span>
           <h1>Red teaming for LLM products that cannot afford surprises.</h1>
           <p className="lead">
-            Sodhak AI runs adversarial LLM red teams to uncover jailbreaks, data
-            leakage, and unsafe tool behavior before you ship.
+            Sodhak AI runs adversarial LLM red teams powered by Sodhak-RT, our
+            testing platform, to uncover jailbreaks, data leakage, and unsafe
+            tool behavior before you ship.
           </p>
           <div className="hero-actions">
             <button className="primary" type="button">
@@ -202,6 +227,34 @@ export default function App() {
               ))}
             </div>
           </div>
+        </div>
+      </section>
+
+      <section id="product" className="section split">
+        <div>
+          <h2>Sodhak-RT, the red teaming engine.</h2>
+          <p>
+            Our product orchestrates attack suites, captures evidence, and tracks
+            retests so engagements move faster and ship with confidence.
+          </p>
+          <div className="cta-card">
+            <h3>Live demo in 30 minutes.</h3>
+            <p>
+              See how Sodhak-RT runs multi-turn attacks and exports findings to
+              your workflow.
+            </p>
+            <button className="primary" type="button">
+              Request demo
+            </button>
+          </div>
+        </div>
+        <div className="cards">
+          {productFeatures.map((feature) => (
+            <div key={feature.title} className="card">
+              <h3>{feature.title}</h3>
+              <p>{feature.description}</p>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -342,7 +395,7 @@ export default function App() {
             </div>
             <div>
               <h4>Focus</h4>
-              <p>LLM red teaming, adversarial testing, safety evaluations</p>
+              <p>LLM red teaming, adversarial testing, Sodhak-RT platform</p>
             </div>
           </div>
         </div>
@@ -403,7 +456,7 @@ export default function App() {
           <div>
             <span>Resources</span>
             <a href="#intel">Adversarial intel</a>
-            <a href="#">Sample reports</a>
+            <a href="#product">Sodhak-RT</a>
             <a href="#">Careers</a>
           </div>
         </div>
