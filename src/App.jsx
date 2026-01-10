@@ -1,119 +1,119 @@
 const services = [
   {
-    title: "Model Firewall",
+    title: "Prompt Injection & Jailbreaks",
     description:
-      "Shield LLMs and agent workflows from prompt injection, data exfiltration, and tool misuse with policy-enforced gateways.",
-    tag: "Pre-deploy",
+      "Attack prompts, system overrides, and policy bypass paths to expose unsafe model behavior before launch.",
+    tag: "Core",
   },
   {
-    title: "Red Team Ops",
+    title: "RAG Data Exfiltration",
     description:
-      "Adversarial testing, jailbreak simulations, and multi-lingual attack suites mapped to your product surface.",
-    tag: "Quarterly",
+      "Probe retrieval pipelines for leakage, source poisoning, and unauthorized data extraction.",
+    tag: "RAG",
   },
   {
-    title: "Secure Retrieval",
+    title: "Tool Abuse Scenarios",
     description:
-      "Harden RAG stacks with vector access control, provenance scoring, and live contamination scans.",
-    tag: "Always on",
+      "Simulate agent tool misuse, privilege escalation, and unsafe automation chains.",
+    tag: "Agents",
   },
   {
-    title: "Agent Guardrails",
+    title: "Policy Evasion",
     description:
-      "Policy-aware orchestration for tool calls, identity scopes, and high-risk automation triggers.",
-    tag: "Runtime",
+      "Stress safety layers with adaptive, multi-turn adversarial strategies.",
+    tag: "Safety",
   },
   {
-    title: "Regulatory Readiness",
+    title: "Multilingual Attacks",
     description:
-      "AI Act and SOC2 evidence packs with continuous control monitoring and board-ready reporting.",
-    tag: "Compliance",
+      "Run cross-lingual jailbreak suites and region-specific threat patterns.",
+    tag: "Global",
   },
   {
-    title: "Incident Response",
+    title: "Custom Attack Design",
     description:
-      "Live containment playbooks for model drift, exploit spikes, and data leakage events.",
-    tag: "On-call",
+      "Build bespoke exploits matched to your domain, data, and product surface.",
+    tag: "Bespoke",
   },
 ];
 
 const approach = [
   {
     step: "01",
-    title: "Map the attack surface",
+    title: "Scope the model surface",
     detail:
-      "Inventory models, prompts, connectors, and human-in-the-loop flows to quantify risk exposure.",
+      "Catalog prompts, tools, data sources, and user journeys to define realistic attack paths.",
   },
   {
     step: "02",
-    title: "Break it with intent",
+    title: "Design adversarial suites",
     detail:
-      "Run curated adversarial suites and custom red teaming to expose the weakest points fast.",
+      "Curate tests from our jailbreak library and craft bespoke attack prompts.",
   },
   {
     step: "03",
-    title: "Harden and monitor",
+    title: "Execute red team sprints",
     detail:
-      "Deploy guardrails, policy engines, and telemetry for continuous defense in production.",
+      "Combine automated fuzzing with human adversaries to find critical failures fast.",
   },
   {
     step: "04",
-    title: "Prove compliance",
+    title: "Deliver fixes and retest",
     detail:
-      "Deliver executive reports, audit trails, and response workflows that satisfy regulators.",
+      "Provide prioritized findings, mitigation guidance, and retest validation.",
   },
 ];
 
 const caseStudies = [
   {
     title: "Fintech copilots",
-    result: "Stopped 93% of injection attempts in week one.",
+    result: "Found 47 critical jailbreak paths in 5 days.",
     detail:
-      "Layered prompt firewalls and transaction-level approvals for 18 tool-integrated agents.",
+      "Mapped tool abuse routes across payments and CRM workflows and delivered a retest-ready fix list.",
   },
   {
     title: "Healthcare summarization",
-    result: "Reduced hallucination risk by 68%.",
+    result: "Uncovered PHI leakage in 72 hours.",
     detail:
-      "Validated sources with provenance scoring and PHI-safe retrieval filters.",
+      "Simulated data extraction attacks against RAG summaries and mapped mitigation steps.",
   },
 ];
 
 const intel = [
   {
-    label: "Active probes",
-    value: "2.4M",
-    detail: "Monthly automated attempts across customer systems.",
+    label: "Attack suites",
+    value: "620+",
+    detail: "Curated jailbreak, injection, and data exfiltration tests.",
   },
   {
-    label: "Median containment",
-    value: "27m",
-    detail: "From detection to response playbook execution.",
+    label: "Median retest",
+    value: "6 days",
+    detail: "From initial findings to verified fixes.",
   },
   {
-    label: "Risk coverage",
-    value: "94%",
-    detail: "Threat scenarios mapped to control owners.",
+    label: "Coverage uplift",
+    value: "88%",
+    detail: "New failures mapped to mitigations.",
   },
 ];
 
 const testimonials = [
   {
     quote:
-      "Sodhak made our AI launch board-ready in six weeks. The team felt like a full security org overnight.",
-    name: "CISO, Global Logistics",
+      "Sodhak ran a red team that revealed blind spots our internal tests missed. The report was actionable within days.",
+    name: "Head of AI, Logistics Tech",
   },
   {
     quote:
-      "Their red team exposed risks we did not know existed and shipped fixes without slowing our roadmap.",
-    name: "VP Product, Enterprise SaaS",
+      "They validated fixes and re-tested fast, so we could ship without guessing.",
+    name: "Security Lead, Enterprise SaaS",
   },
 ];
 
 const riskSignals = [
-  { label: "Prompt injection", score: "92", tone: "critical" },
-  { label: "Data leakage", score: "78", tone: "high" },
-  { label: "Tool misuse", score: "64", tone: "medium" },
+  { label: "Injection vectors", score: "92", tone: "critical" },
+  { label: "Policy bypass", score: "78", tone: "high" },
+  { label: "Tool abuse", score: "64", tone: "medium" },
 ];
 
 export default function App() {
@@ -122,47 +122,44 @@ export default function App() {
       <header className="nav">
         <div className="logo">Sodhak AI</div>
         <nav className="nav-links">
-          <a href="#services">Services</a>
-          <a href="#approach">Approach</a>
+          <a href="#services">Coverage</a>
+          <a href="#approach">Method</a>
           <a href="#intel">Intel</a>
           <a href="#contact">Contact</a>
         </nav>
         <a className="nav-cta" href="#contact">
-          Schedule Audit
+          Schedule Red Team
         </a>
       </header>
 
       <section className="hero">
         <div className="hero-content">
-          <span className="pill">AI Security Studio</span>
-          <h1>
-            Security for AI-first teams that refuse to ship blind.
-          </h1>
+          <span className="pill">LLM Red Teaming</span>
+          <h1>Red teaming for LLM products that cannot afford surprises.</h1>
           <p className="lead">
-            Sodhak AI protects model-driven products with continuous red teaming,
-            hardened RAG systems, and rapid-response playbooks designed for high-risk
-            deployments.
+            Sodhak AI runs adversarial LLM red teams to uncover jailbreaks, data
+            leakage, and unsafe tool behavior before you ship.
           </p>
           <div className="hero-actions">
             <button className="primary" type="button">
-              Book a risk review
+              Book a red team
             </button>
             <button className="ghost" type="button">
-              View the playbook
+              See sample report
             </button>
           </div>
           <div className="metrics">
             <div>
               <h3>120+</h3>
-              <p>Models hardened</p>
+              <p>LLMs tested</p>
             </div>
             <div>
-              <h3>24/7</h3>
-              <p>Incident response</p>
+              <h3>3-10 days</h3>
+              <p>Typical engagement</p>
             </div>
             <div>
-              <h3>48 hrs</h3>
-              <p>Average hardening sprint</p>
+              <h3>4x</h3>
+              <p>Retest loops per cycle</p>
             </div>
           </div>
         </div>
@@ -171,8 +168,8 @@ export default function App() {
           <div className="panel-card">
             <div className="panel-header">
               <div>
-                <p className="panel-title">Live risk map</p>
-                <span className="panel-subtitle">Global model telemetry</span>
+                <p className="panel-title">Red team findings</p>
+                <span className="panel-subtitle">Last 7 days of attack runs</span>
               </div>
               <span className="live-dot">Live</span>
             </div>
@@ -185,16 +182,16 @@ export default function App() {
               ))}
             </ul>
             <div className="panel-footer">
-              <span className="signal">+18% anomaly spike</span>
+              <span className="signal">+18 new findings</span>
               <span className="signal muted">Updated 12 mins ago</span>
             </div>
           </div>
 
           <div className="panel-card alt">
-            <h4>Threat intel pulse</h4>
+            <h4>Adversarial pulse</h4>
             <p>
-              We blend adversarial research, human red teams, and real-time
-              telemetry to deliver a defense loop tailored to your AI stack.
+              We combine human red teams with automated attack suites to pressure-test
+              your LLM product surface.
             </p>
             <div className="mini-grid">
               {intel.map((item) => (
@@ -208,28 +205,17 @@ export default function App() {
         </div>
       </section>
 
-      <section className="trusted">
-        <p>Trusted by fast-moving teams in fintech, healthcare, logistics, and defense.</p>
-        <div className="trusted-row">
-          <span>Arcadia Labs</span>
-          <span>Evervault Core</span>
-          <span>Northwind AI</span>
-          <span>Atlas Signal</span>
-          <span>Kepler Trust</span>
-        </div>
-      </section>
-
       <section id="services" className="section">
         <div className="section-heading">
           <div>
-            <h2>Security services that move at product speed.</h2>
+            <h2>Red team coverage that mirrors your product surface.</h2>
             <p>
-              From launch readiness to continuous protection, we embed alongside
-              your engineering team and secure the full AI lifecycle.
+              We attack prompts, tools, and retrieval systems to uncover failures
+              before launch.
             </p>
           </div>
           <button className="ghost" type="button">
-            Download capability deck
+            Download sample report
           </button>
         </div>
         <div className="cards">
@@ -245,16 +231,16 @@ export default function App() {
 
       <section id="approach" className="section split">
         <div>
-          <h2>Our security loop is built for AI velocity.</h2>
+          <h2>Our red team loop is built for AI velocity.</h2>
           <p>
-            Sodhak AI combines technical depth with operational rigor, so your
-            teams ship safer models without slowing down.
+            Sodhak AI blends human adversaries and automation to deliver fast,
+            repeatable testing cycles.
           </p>
           <div className="cta-card">
-            <h3>Security sprint in 48 hours.</h3>
+            <h3>Red team sprint in 5 days.</h3>
             <p>
-              We deploy a focused assessment team, deliver a prioritized fix list,
-              and ship guardrails alongside your engineers.
+              We deploy an embedded team, deliver a prioritized fix list, and
+              validate remediation with retesting.
             </p>
             <button className="primary" type="button">
               Start a sprint
@@ -277,10 +263,9 @@ export default function App() {
       <section id="intel" className="section">
         <div className="section-heading">
           <div>
-            <h2>Threat intel that keeps pace with modern AI risk.</h2>
+            <h2>Adversarial intel that stays ahead of jailbreaks.</h2>
             <p>
-              Our researchers track jailbreaks, supply-chain compromise, and
-              policy evasion to keep your defenses current.
+              We track emerging attack patterns and refresh our suites every week.
             </p>
           </div>
         </div>
@@ -298,10 +283,9 @@ export default function App() {
       <section className="section cases">
         <div className="section-heading">
           <div>
-            <h2>Case studies from real deployments.</h2>
+            <h2>Case studies from red team engagements.</h2>
             <p>
-              We turn security gaps into product momentum across sensitive AI use
-              cases.
+              We turn exposure into action across sensitive AI use cases.
             </p>
           </div>
         </div>
@@ -322,10 +306,10 @@ export default function App() {
       <section className="section testimonials">
         <div className="section-heading">
           <div>
-            <h2>Leaders trust Sodhak to secure the frontier.</h2>
+            <h2>Teams trust Sodhak for LLM red teaming.</h2>
             <p>
               Embedded collaboration, measurable risk reduction, and faster AI
-              adoption.
+              launches.
             </p>
           </div>
         </div>
@@ -341,11 +325,11 @@ export default function App() {
 
       <section id="contact" className="section contact">
         <div className="contact-info">
-          <span className="pill">Start secure</span>
-          <h2>Talk to the team that secures AI at scale.</h2>
+          <span className="pill">Start red teaming</span>
+          <h2>Talk to the LLM red team.</h2>
           <p>
-            We respond within 24 hours with an assessment plan and a tailored
-            scope. Prefer email? Reach us at <strong>hello@sodhakai.com</strong>.
+            We respond within 24 hours with a scoped red team plan and timeline.
+            Prefer email? Reach us at <strong>hello@sodhakai.com</strong>.
           </p>
           <div className="contact-list">
             <div>
@@ -358,7 +342,7 @@ export default function App() {
             </div>
             <div>
               <h4>Focus</h4>
-              <p>AI security, compliance, incident response</p>
+              <p>LLM red teaming, adversarial testing, safety evaluations</p>
             </div>
           </div>
         </div>
@@ -387,11 +371,11 @@ export default function App() {
             <input type="text" name="company" placeholder="Company name" />
           </label>
           <label>
-            What are you securing?
+            What should we red-team?
             <textarea
               name="message"
               rows="5"
-              placeholder="Tell us about your AI product and timeline."
+              placeholder="Tell us about your LLM product, tools, and timeline."
               required
             />
           </label>
@@ -407,19 +391,19 @@ export default function App() {
       <footer className="footer">
         <div>
           <h3>Sodhak AI</h3>
-          <p>Security for AI systems that power your business.</p>
+          <p>LLM red teaming for AI systems that ship with confidence.</p>
         </div>
         <div className="footer-links">
           <div>
             <span>Company</span>
-            <a href="#services">Services</a>
-            <a href="#approach">Approach</a>
+            <a href="#services">Coverage</a>
+            <a href="#approach">Method</a>
             <a href="#contact">Contact</a>
           </div>
           <div>
             <span>Resources</span>
-            <a href="#intel">Threat intel</a>
-            <a href="#">Trust center</a>
+            <a href="#intel">Adversarial intel</a>
+            <a href="#">Sample reports</a>
             <a href="#">Careers</a>
           </div>
         </div>

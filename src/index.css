@@ -1,9 +1,44 @@
+@font-face {
+  font-family: "Go Mono Nerd Font";
+  src: url("./assets/fonts/GoMonoNerdFont-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Go Mono Nerd Font";
+  src: url("./assets/fonts/GoMonoNerdFont-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Go Mono Nerd Font";
+  src: url("./assets/fonts/GoMonoNerdFont-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Go Mono Nerd Font";
+  src: url("./assets/fonts/GoMonoNerdFont-BoldItalic.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
 :root {
   color-scheme: dark;
-  font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+  font-family: "Go Mono Nerd Font", ui-monospace, SFMono-Regular, Menlo, Monaco,
+    Consolas, "Liberation Mono", "Courier New", monospace;
   line-height: 1.5;
   font-weight: 400;
 
+  --font-primary: "Go Mono Nerd Font", ui-monospace, SFMono-Regular, Menlo,
+    Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --bg: #06090d;
   --bg-alt: #0b131b;
   --surface: #0f1b25;
@@ -47,7 +82,7 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-family: var(--font-primary);
 }
 
 a {
@@ -123,7 +158,7 @@ img {
 }
 
 .logo {
-  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-family: var(--font-primary);
   font-size: 20px;
   font-weight: 600;
   letter-spacing: 0.5px;
@@ -168,7 +203,7 @@ img {
 }
 
 .hero-content h1 {
-  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-family: var(--font-primary);
   font-size: clamp(2.6rem, 4vw, 3.6rem);
   line-height: 1.05;
   margin: 16px 0 20px;
@@ -233,7 +268,7 @@ img {
 }
 
 .metrics h3 {
-  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-family: var(--font-primary);
   font-size: 1.4rem;
 }
 
@@ -329,7 +364,7 @@ img {
 }
 
 .risk-score {
-  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-family: var(--font-primary);
   font-weight: 600;
 }
 
@@ -370,28 +405,6 @@ img {
   color: var(--text);
 }
 
-.trusted {
-  margin: 16px 0 50px;
-  padding: 20px 24px;
-  border-radius: var(--radius);
-  background: rgba(12, 20, 28, 0.65);
-  border: 1px solid rgba(148, 180, 203, 0.15);
-  display: grid;
-  gap: 16px;
-  text-align: center;
-}
-
-.trusted-row {
-  display: flex;
-  justify-content: center;
-  gap: 22px;
-  flex-wrap: wrap;
-  color: var(--muted);
-  font-size: 0.9rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
 .section {
   padding: 64px 0;
   display: grid;
@@ -406,7 +419,7 @@ img {
 }
 
 .section h2 {
-  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-family: var(--font-primary);
   font-size: clamp(2rem, 3vw, 2.8rem);
   margin-bottom: 12px;
 }
@@ -497,7 +510,7 @@ img {
 }
 
 .step {
-  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-family: var(--font-primary);
   font-size: 1.1rem;
   color: var(--accent);
 }
@@ -518,7 +531,7 @@ img {
 }
 
 .intel-card h3 {
-  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-family: var(--font-primary);
   font-size: 1.6rem;
 }
 
@@ -635,7 +648,7 @@ img {
 }
 
 .footer h3 {
-  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-family: var(--font-primary);
   color: var(--text);
   margin-bottom: 8px;
 }
