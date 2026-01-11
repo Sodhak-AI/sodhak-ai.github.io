@@ -175,10 +175,9 @@ const tabs = [
 
 export default function App() {
   const [activeTab, setActiveTab] = useState("overview");
+  const [activeFeature, setActiveFeature] = useState(0);
   const navRef = useRef(null);
   const footerRef = useRef(null);
-  const cardsRef = useRef(null);
-  const galleryRef = useRef(null);
 
   useEffect(() => {
     const getHashTab = () => {
@@ -231,12 +230,51 @@ export default function App() {
     }
   };
 
-  const scrollShelves = () => {
-    const targets = [cardsRef.current, galleryRef.current].filter(Boolean);
-    targets.forEach((target) => {
-      const distance = Math.max(target.clientWidth * 0.8, 240);
-      target.scrollBy({ left: distance, behavior: "smooth" });
-    });
+  const totalFeatures = productFeatures.length;
+
+  const showNextFeature = () => {
+    setActiveFeature((current) => (current + 1) % totalFeatures);
+  };
+
+  const showPrevFeature = () => {
+    setActiveFeature((current) =>
+      current === 0 ? totalFeatures - 1 : current - 1
+    );
+  };
+
+  const getStackOffset = (index) => {
+    const rawOffset = index - activeFeature;
+    const half = Math.floor(totalFeatures / 2);
+    if (rawOffset > half) {
+      return rawOffset - totalFeatures;
+    }
+    if (rawOffset < -half) {
+      return rawOffset + totalFeatures;
+    }
+    return rawOffset;
+  };
+
+  const getStackStyle = (offset) => {
+    const abs = Math.abs(offset);
+    if (abs > 2) {
+      return {
+        opacity: 0,
+        pointerEvents: "none",
+        transform: "translateX(0px) translateZ(-360px) scale(0.6)",
+      };
+    }
+    const translateX = offset * 180;
+    const translateZ = -abs * 120;
+    const rotateY = offset * -12;
+    const scale = 1 - abs * 0.08;
+    const opacity = abs === 2 ? 0.4 : abs === 1 ? 0.85 : 1;
+    return {
+      transform: `translateX(${translateX}px) translateZ(${translateZ}px) rotateY(${rotateY}deg) scale(${scale})`,
+      opacity,
+      zIndex: 10 - abs,
+      filter: abs === 2 ? "blur(1.5px)" : "none",
+      pointerEvents: abs === 0 ? "auto" : "none",
+    };
   };
 
   return (
@@ -382,23 +420,46 @@ export default function App() {
             </div>
           </div>
           <div className="product-showcase">
-            <button
-              className="shelf-arrow"
-              type="button"
-              onClick={scrollShelves}
-              aria-label="Scroll product shelves"
-            >
-              &gt;
-            </button>
-            <div className="cards" ref={cardsRef}>
-              {productFeatures.map((feature) => (
-                <div key={feature.title} className="card">
-                  <h3>{feature.title}</h3>
-                  <p>{feature.description}</p>
-                </div>
-              ))}
+            <div className="product-stack-wrap">
+              <div className="product-stack" aria-live="polite">
+                {productFeatures.map((feature, index) => {
+                  const offset = getStackOffset(index);
+                  return (
+                    <div
+                      key={feature.title}
+                      className="card stack-card"
+                      style={getStackStyle(offset)}
+                      aria-hidden={offset !== 0}
+                    >
+                      <h3>{feature.title}</h3>
+                      <p>{feature.description}</p>
+                    </div>
+                  );
+                })}
+              </div>
+              <div className="stack-controls">
+                <button
+                  className="stack-arrow"
+                  type="button"
+                  onClick={showPrevFeature}
+                  aria-label="Previous feature"
+                >
+                  ‹
+                </button>
+                <span className="stack-count">
+                  {activeFeature + 1}/{totalFeatures}
+                </span>
+                <button
+                  className="stack-arrow"
+                  type="button"
+                  onClick={showNextFeature}
+                  aria-label="Next feature"
+                >
+                  ›
+                </button>
+              </div>
             </div>
-            <div className="product-gallery" ref={galleryRef}>
+            <div className="product-gallery">
               {productImages.map((image) => (
                 <div key={image.src} className="product-image">
                   <img src={image.src} alt={image.alt} loading="lazy" />
