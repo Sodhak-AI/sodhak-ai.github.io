@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import productImage1 from "../img/image1.png";
 import productImage2 from "../img/image2.png";
 import productImage3 from "../img/image3.png";
@@ -175,6 +175,8 @@ const tabs = [
 
 export default function App() {
   const [activeTab, setActiveTab] = useState("overview");
+  const cardsRef = useRef(null);
+  const galleryRef = useRef(null);
 
   useEffect(() => {
     const getHashTab = () => {
@@ -203,6 +205,14 @@ export default function App() {
     if (window.location.hash !== `#${tabId}`) {
       window.location.hash = tabId;
     }
+  };
+
+  const scrollShelves = () => {
+    const targets = [cardsRef.current, galleryRef.current].filter(Boolean);
+    targets.forEach((target) => {
+      const distance = Math.max(target.clientWidth * 0.8, 240);
+      target.scrollBy({ left: distance, behavior: "smooth" });
+    });
   };
 
   return (
@@ -348,7 +358,15 @@ export default function App() {
             </div>
           </div>
           <div className="product-showcase">
-            <div className="cards">
+            <button
+              className="shelf-arrow"
+              type="button"
+              onClick={scrollShelves}
+              aria-label="Scroll product shelves"
+            >
+              &gt;
+            </button>
+            <div className="cards" ref={cardsRef}>
               {productFeatures.map((feature) => (
                 <div key={feature.title} className="card">
                   <h3>{feature.title}</h3>
@@ -356,7 +374,7 @@ export default function App() {
                 </div>
               ))}
             </div>
-            <div className="product-gallery">
+            <div className="product-gallery" ref={galleryRef}>
               {productImages.map((image) => (
                 <div key={image.src} className="product-image">
                   <img src={image.src} alt={image.alt} loading="lazy" />

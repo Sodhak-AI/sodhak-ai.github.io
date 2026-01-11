@@ -464,6 +464,7 @@ img {
 .product-showcase {
   display: grid;
   gap: 24px;
+  position: relative;
 }
 
 .product-showcase .cards,
@@ -476,6 +477,28 @@ img {
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
   overscroll-behavior-inline: contain;
+}
+
+.shelf-arrow {
+  position: absolute;
+  right: 0;
+  top: -6px;
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  border: 1px solid rgba(61, 242, 199, 0.5);
+  background: rgba(10, 18, 26, 0.85);
+  color: var(--text);
+  font-size: 18px;
+  display: grid;
+  place-items: center;
+  z-index: 2;
+  box-shadow: 0 8px 20px rgba(4, 10, 14, 0.5);
+}
+
+.shelf-arrow:hover {
+  border-color: rgba(61, 242, 199, 0.9);
+  transform: translateX(2px);
 }
 
 .product-showcase .cards {
