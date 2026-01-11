@@ -61,12 +61,19 @@
   padding: 0;
 }
 
+html,
+body,
+#root {
+  height: 100%;
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
   min-height: 100vh;
+  overflow: hidden;
   background-color: var(--bg);
   background-image:
     radial-gradient(circle at 15% 20%, rgba(61, 242, 199, 0.16), transparent 45%),
@@ -115,8 +122,13 @@ img {
 .page {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 32px 24px 80px;
+  padding: 24px;
   position: relative;
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 16px;
+  overflow: hidden;
 }
 
 .page::before {
@@ -152,8 +164,7 @@ img {
   border-radius: 999px;
   background: rgba(12, 20, 28, 0.55);
   backdrop-filter: blur(14px);
-  position: sticky;
-  top: 20px;
+  position: relative;
   z-index: 10;
 }
 
@@ -171,12 +182,24 @@ img {
   color: var(--muted);
 }
 
-.nav-links a {
-  transition: color 0.2s ease;
+.nav-links button {
+  color: inherit;
+  font-size: 13px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  transition: color 0.2s ease, border 0.2s ease, background 0.2s ease;
 }
 
-.nav-links a:hover {
+.nav-links button:hover {
   color: var(--text);
+  border-color: rgba(148, 180, 203, 0.4);
+}
+
+.nav-links button.active {
+  color: var(--text);
+  border-color: rgba(61, 242, 199, 0.6);
+  background: rgba(61, 242, 199, 0.12);
 }
 
 .nav-cta {
@@ -199,7 +222,7 @@ img {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 48px;
   align-items: center;
-  padding: 72px 0 48px;
+  padding: 48px 0 32px;
 }
 
 .hero-content h1 {
@@ -406,9 +429,9 @@ img {
 }
 
 .section {
-  padding: 64px 0;
+  padding: 40px 0;
   display: grid;
-  gap: 32px;
+  gap: 24px;
 }
 
 .section-heading {
@@ -662,8 +685,8 @@ img {
 }
 
 .footer {
-  margin-top: 60px;
-  padding: 32px 0 20px;
+  margin-top: 0;
+  padding: 20px 0 10px;
   border-top: 1px solid rgba(148, 180, 203, 0.2);
   display: flex;
   justify-content: space-between;
@@ -689,9 +712,56 @@ img {
   font-size: 0.9rem;
 }
 
+.footer-links button {
+  background: none;
+  border: none;
+  color: var(--muted);
+  text-align: left;
+  padding: 0;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.footer-links button:hover {
+  color: var(--text);
+}
+
 .footer-links span {
   color: var(--text);
   font-weight: 600;
+}
+
+.main {
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.tab-panel {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding-right: 6px;
+  scrollbar-width: none;
+}
+
+.tab-panel::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.tab-stack {
+  display: grid;
+  gap: 24px;
+}
+
+.tab-stack > .section:first-child {
+  padding-top: 0;
+}
+
+.tab-stack > .section:last-child {
+  padding-bottom: 0;
 }
 
 @keyframes float {
