@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import productImage1 from "../img/image1.png";
 import productImage2 from "../img/image2.png";
 import productImage3 from "../img/image3.png";
@@ -176,6 +176,35 @@ const tabs = [
 export default function App() {
   const [activeTab, setActiveTab] = useState("overview");
 
+  useEffect(() => {
+    const getHashTab = () => {
+      const hash = window.location.hash.replace("#", "");
+      return tabs.some((tab) => tab.id === hash) ? hash : null;
+    };
+
+    const hashTab = getHashTab();
+    if (hashTab) {
+      setActiveTab(hashTab);
+    }
+
+    const onHashChange = () => {
+      const nextTab = getHashTab();
+      if (nextTab) {
+        setActiveTab(nextTab);
+      }
+    };
+
+    window.addEventListener("hashchange", onHashChange);
+    return () => window.removeEventListener("hashchange", onHashChange);
+  }, []);
+
+  const activateTab = (tabId) => {
+    setActiveTab(tabId);
+    if (window.location.hash !== `#${tabId}`) {
+      window.location.hash = tabId;
+    }
+  };
+
   return (
     <div className="page">
       <header className="nav">
@@ -190,7 +219,7 @@ export default function App() {
               type="button"
               aria-selected={activeTab === tab.id}
               aria-controls={`tab-panel-${tab.id}`}
-              onClick={() => setActiveTab(tab.id)}
+              onClick={() => activateTab(tab.id)}
             >
               {tab.label}
             </button>
@@ -199,7 +228,7 @@ export default function App() {
         <button
           className="nav-cta"
           type="button"
-          onClick={() => setActiveTab("contact")}
+          onClick={() => activateTab("contact")}
         >
           Schedule Red Team
         </button>
@@ -225,14 +254,14 @@ export default function App() {
               <button
                 className="primary"
                 type="button"
-                onClick={() => setActiveTab("contact")}
+                onClick={() => activateTab("contact")}
               >
                 Book a red team
               </button>
               <button
                 className="ghost"
                 type="button"
-                onClick={() => setActiveTab("services")}
+                onClick={() => activateTab("services")}
               >
                 See sample report
               </button>
@@ -556,22 +585,22 @@ export default function App() {
         <div className="footer-links">
           <div>
             <span>Company</span>
-            <button type="button" onClick={() => setActiveTab("services")}>
+            <button type="button" onClick={() => activateTab("services")}>
               Coverage
             </button>
-            <button type="button" onClick={() => setActiveTab("approach")}>
+            <button type="button" onClick={() => activateTab("approach")}>
               Method
             </button>
-            <button type="button" onClick={() => setActiveTab("contact")}>
+            <button type="button" onClick={() => activateTab("contact")}>
               Contact
             </button>
           </div>
           <div>
             <span>Resources</span>
-            <button type="button" onClick={() => setActiveTab("intel")}>
+            <button type="button" onClick={() => activateTab("intel")}>
               Adversarial intel
             </button>
-            <button type="button" onClick={() => setActiveTab("product")}>
+            <button type="button" onClick={() => activateTab("product")}>
               Sodhak-RT
             </button>
             <button type="button">Careers</button>
