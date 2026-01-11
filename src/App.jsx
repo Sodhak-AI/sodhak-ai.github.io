@@ -175,6 +175,8 @@ const tabs = [
 
 export default function App() {
   const [activeTab, setActiveTab] = useState("overview");
+  const navRef = useRef(null);
+  const footerRef = useRef(null);
   const cardsRef = useRef(null);
   const galleryRef = useRef(null);
 
@@ -200,6 +202,28 @@ export default function App() {
     return () => window.removeEventListener("hashchange", onHashChange);
   }, []);
 
+  useEffect(() => {
+    const updateHeights = () => {
+      const root = document.documentElement;
+      if (navRef.current) {
+        root.style.setProperty(
+          "--nav-height",
+          `${navRef.current.offsetHeight}px`
+        );
+      }
+      if (footerRef.current) {
+        root.style.setProperty(
+          "--footer-height",
+          `${footerRef.current.offsetHeight}px`
+        );
+      }
+    };
+
+    updateHeights();
+    window.addEventListener("resize", updateHeights);
+    return () => window.removeEventListener("resize", updateHeights);
+  }, []);
+
   const activateTab = (tabId) => {
     setActiveTab(tabId);
     if (window.location.hash !== `#${tabId}`) {
@@ -217,7 +241,7 @@ export default function App() {
 
   return (
     <div className="page">
-      <header className="nav">
+      <header className="nav" ref={navRef}>
         <div className="logo">Sodhak AI</div>
         <nav className="nav-links" role="tablist" aria-label="Site sections">
           {tabs.map((tab) => (
@@ -595,7 +619,7 @@ export default function App() {
         </section>
       </main>
 
-      <footer className="footer">
+      <footer className="footer" ref={footerRef}>
         <div>
           <h3>Sodhak AI</h3>
           <p>LLM red teaming for AI systems that ship with confidence.</p>

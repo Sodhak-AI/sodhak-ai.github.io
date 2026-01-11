@@ -54,6 +54,8 @@
   --radius: 20px;
   --shadow: 0 20px 60px rgba(4, 10, 14, 0.65);
   --page-padding: 24px;
+  --nav-height: 88px;
+  --footer-height: 92px;
 }
 
 * {
@@ -127,13 +129,13 @@ img {
 .page {
   max-width: 1200px;
   margin: 0 auto;
-  padding: var(--page-padding);
+  padding: 0 var(--page-padding);
   position: relative;
   min-height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr auto;
   gap: 16px;
-  overflow: visible;
+  overflow: hidden;
 }
 
 .page::before {
@@ -164,15 +166,16 @@ img {
   align-items: center;
   justify-content: space-between;
   gap: 20px;
-  padding: 16px var(--page-padding);
+  padding: 16px max(var(--page-padding), calc((100vw - 1200px) / 2));
   border: 1px solid rgba(148, 180, 203, 0.2);
-  border-radius: 999px;
+  border-radius: 0;
   background: rgba(12, 20, 28, 0.55);
   backdrop-filter: blur(14px);
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 10;
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
 }
 
 .logo {
@@ -741,15 +744,20 @@ img {
 
 .footer {
   margin-top: 0;
-  padding: 20px var(--page-padding) 10px;
+  padding: 20px max(var(--page-padding), calc((100vw - 1200px) / 2)) 10px;
   border-top: 1px solid rgba(148, 180, 203, 0.2);
   display: flex;
   justify-content: space-between;
   gap: 30px;
   flex-wrap: wrap;
   color: var(--muted);
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
+  background: rgba(9, 15, 21, 0.85);
+  backdrop-filter: blur(14px);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9;
 }
 
 .footer h3 {
@@ -790,6 +798,9 @@ img {
 
 .main {
   min-height: 0;
+  height: calc(100vh - var(--nav-height) - var(--footer-height));
+  margin-top: var(--nav-height);
+  margin-bottom: var(--footer-height);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -843,6 +854,10 @@ img {
 }
 
 @media (max-width: 980px) {
+  :root {
+    --page-padding: 18px;
+  }
+
   .nav {
     flex-direction: column;
     align-items: stretch;
@@ -871,6 +886,10 @@ img {
 }
 
 @media (max-width: 720px) {
+  :root {
+    --page-padding: 16px;
+  }
+
   .metrics {
     grid-template-columns: 1fr;
   }
