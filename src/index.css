@@ -53,6 +53,7 @@
   --danger: #ff7a70;
   --radius: 20px;
   --shadow: 0 20px 60px rgba(4, 10, 14, 0.65);
+  --page-padding: 24px;
 }
 
 * {
@@ -126,13 +127,13 @@ img {
 .page {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 24px;
+  padding: var(--page-padding);
   position: relative;
   min-height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr auto;
   gap: 16px;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .page::before {
@@ -163,13 +164,15 @@ img {
   align-items: center;
   justify-content: space-between;
   gap: 20px;
-  padding: 16px 20px;
+  padding: 16px var(--page-padding);
   border: 1px solid rgba(148, 180, 203, 0.2);
   border-radius: 999px;
   background: rgba(12, 20, 28, 0.55);
   backdrop-filter: blur(14px);
   position: relative;
   z-index: 10;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
 }
 
 .logo {
@@ -738,13 +741,15 @@ img {
 
 .footer {
   margin-top: 0;
-  padding: 20px 0 10px;
+  padding: 20px var(--page-padding) 10px;
   border-top: 1px solid rgba(148, 180, 203, 0.2);
   display: flex;
   justify-content: space-between;
   gap: 30px;
   flex-wrap: wrap;
   color: var(--muted);
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
 }
 
 .footer h3 {
