@@ -1,3 +1,8 @@
+import productImage1 from "../img/image1.png";
+import productImage2 from "../img/image2.png";
+import productImage3 from "../img/image3.png";
+import productImage4 from "../img/image4.png";
+
 const services = [
   {
     title: "Prompt Injection & Jailbreaks",
@@ -57,6 +62,25 @@ const productFeatures = [
     title: "Retest Automation",
     description:
       "Trigger targeted retests, compare deltas, and verify fixes across releases.",
+  },
+];
+
+const productImages = [
+  {
+    src: productImage1,
+    alt: "Sodhak-RT interface screen 1",
+  },
+  {
+    src: productImage2,
+    alt: "Sodhak-RT interface screen 2",
+  },
+  {
+    src: productImage3,
+    alt: "Sodhak-RT interface screen 3",
+  },
+  {
+    src: productImage4,
+    alt: "Sodhak-RT interface screen 4",
   },
 ];
 
@@ -248,13 +272,22 @@ export default function App() {
             </button>
           </div>
         </div>
-        <div className="cards">
-          {productFeatures.map((feature) => (
-            <div key={feature.title} className="card">
-              <h3>{feature.title}</h3>
-              <p>{feature.description}</p>
-            </div>
-          ))}
+        <div className="product-showcase">
+          <div className="cards">
+            {productFeatures.map((feature) => (
+              <div key={feature.title} className="card">
+                <h3>{feature.title}</h3>
+                <p>{feature.description}</p>
+              </div>
+            ))}
+          </div>
+          <div className="product-gallery">
+            {productImages.map((image) => (
+              <div key={image.src} className="product-image">
+                <img src={image.src} alt={image.alt} loading="lazy" />
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
