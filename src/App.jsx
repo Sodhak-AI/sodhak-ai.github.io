@@ -624,30 +624,6 @@ export default function App() {
           <h3>Sodhak AI</h3>
           <p>LLM red teaming for AI systems that ship with confidence.</p>
         </div>
-        <div className="footer-links">
-          <div>
-            <span>Company</span>
-            <button type="button" onClick={() => activateTab("services")}>
-              Coverage
-            </button>
-            <button type="button" onClick={() => activateTab("approach")}>
-              Method
-            </button>
-            <button type="button" onClick={() => activateTab("contact")}>
-              Contact
-            </button>
-          </div>
-          <div>
-            <span>Resources</span>
-            <button type="button" onClick={() => activateTab("intel")}>
-              Adversarial intel
-            </button>
-            <button type="button" onClick={() => activateTab("product")}>
-              Sodhak-RT
-            </button>
-            <button type="button">Careers</button>
-          </div>
-        </div>
       </footer>
     </div>
   );
