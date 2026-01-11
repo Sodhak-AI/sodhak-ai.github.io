@@ -466,10 +466,18 @@ img {
   gap: 24px;
 }
 
+.product-showcase .cards {
+  grid-template-columns: 1fr;
+}
+
 .product-gallery {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
+}
+
+.product-showcase .product-gallery {
+  grid-template-columns: 1fr;
 }
 
 .product-image {
