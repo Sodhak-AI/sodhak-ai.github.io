@@ -1,8 +1,6 @@
+"use client";
+
 import { useEffect, useRef, useState } from "react";
-import productImage1 from "../img/image1.png";
-import productImage2 from "../img/image2.png";
-import productImage3 from "../img/image3.png";
-import productImage4 from "../img/image4.png";
 
 const services = [
   {
@@ -68,19 +66,19 @@ const productFeatures = [
 
 const productImages = [
   {
-    src: productImage1,
+    src: "/img/image1.png",
     alt: "Sodhak-RT interface screen 1",
   },
   {
-    src: productImage2,
+    src: "/img/image2.png",
     alt: "Sodhak-RT interface screen 2",
   },
   {
-    src: productImage3,
+    src: "/img/image3.png",
     alt: "Sodhak-RT interface screen 3",
   },
   {
-    src: productImage4,
+    src: "/img/image4.png",
     alt: "Sodhak-RT interface screen 4",
   },
 ];
@@ -173,7 +171,7 @@ const tabs = [
   { id: "contact", label: "Contact" },
 ];
 
-export default function App() {
+export default function Home() {
   const [activeTab, setActiveTab] = useState("overview");
   const [activeFeature, setActiveFeature] = useState(0);
   const navRef = useRef(null);
@@ -638,10 +636,7 @@ export default function App() {
             </div>
           </div>
 
-          <form
-            className="contact-form"
-            onSubmit={(event) => event.preventDefault()}
-          >
+          <form className="contact-form" onSubmit={(event) => event.preventDefault()}>
             <div className="form-row">
               <label>
                 Full name

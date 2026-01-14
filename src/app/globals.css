@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Go Mono Nerd Font";
-  src: url("./assets/fonts/GoMonoNerdFont-Regular.ttf") format("truetype");
+  src: url("/fonts/GoMonoNerdFont-Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -8,7 +8,7 @@
 
 @font-face {
   font-family: "Go Mono Nerd Font";
-  src: url("./assets/fonts/GoMonoNerdFont-Italic.ttf") format("truetype");
+  src: url("/fonts/GoMonoNerdFont-Italic.ttf") format("truetype");
   font-weight: 400;
   font-style: italic;
   font-display: swap;
@@ -16,7 +16,7 @@
 
 @font-face {
   font-family: "Go Mono Nerd Font";
-  src: url("./assets/fonts/GoMonoNerdFont-Bold.ttf") format("truetype");
+  src: url("/fonts/GoMonoNerdFont-Bold.ttf") format("truetype");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -24,7 +24,7 @@
 
 @font-face {
   font-family: "Go Mono Nerd Font";
-  src: url("./assets/fonts/GoMonoNerdFont-BoldItalic.ttf") format("truetype");
+  src: url("/fonts/GoMonoNerdFont-BoldItalic.ttf") format("truetype");
   font-weight: 700;
   font-style: italic;
   font-display: swap;
@@ -69,13 +69,13 @@
 }
 
 html,
-body,
-#root {
+body {
   height: 100%;
 }
 
 html {
   scroll-behavior: smooth;
+  font-size: 16px;
 }
 
 body {
@@ -879,6 +879,10 @@ img {
     --page-padding: 16px;
   }
 
+  html {
+    font-size: 14px;
+  }
+
   .metrics {
     grid-template-columns: 1fr;
   }
@@ -909,9 +913,6 @@ img {
     align-items: flex-start;
   }
 
-  .nav {
-    position: static;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
