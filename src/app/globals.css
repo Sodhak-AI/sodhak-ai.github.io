@@ -242,6 +242,10 @@ img {
   margin: 16px 0 20px;
 }
 
+.hero-content {
+  text-align: center;
+}
+
 .lead {
   font-size: 1.1rem;
   color: var(--muted);
@@ -298,6 +302,7 @@ img {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 20px;
+  justify-items: center;
 }
 
 .metrics h3 {
@@ -446,9 +451,10 @@ img {
 
 .section-heading {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+  flex-direction: column;
+  align-items: center;
   gap: 20px;
+  text-align: center;
 }
 
 .section h2 {
@@ -709,6 +715,7 @@ img {
 .contact-info {
   display: grid;
   gap: 20px;
+  text-align: center;
 }
 
 .contact-list {
@@ -793,6 +800,12 @@ img {
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.main > section {
+  width: 100%;
 }
 
 .tab-panel {
