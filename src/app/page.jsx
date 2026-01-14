@@ -174,6 +174,7 @@ const tabs = [
 export default function Home() {
   const [activeTab, setActiveTab] = useState("overview");
   const [activeFeature, setActiveFeature] = useState(0);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navRef = useRef(null);
   const footerRef = useRef(null);
 
@@ -223,9 +224,14 @@ export default function Home() {
 
   const activateTab = (tabId) => {
     setActiveTab(tabId);
+    setIsMenuOpen(false);
     if (window.location.hash !== `#${tabId}`) {
       window.location.hash = tabId;
     }
+  };
+
+  const toggleMenu = () => {
+    setIsMenuOpen((open) => !open);
   };
 
   const totalFeatures = productFeatures.length;
@@ -279,7 +285,21 @@ export default function Home() {
     <div className="page">
       <header className="nav" ref={navRef}>
         <div className="logo">Sodhak AI</div>
-        <nav className="nav-links" role="tablist" aria-label="Site sections">
+        <button
+          className="nav-toggle"
+          type="button"
+          aria-expanded={isMenuOpen}
+          aria-controls="mobile-nav"
+          onClick={toggleMenu}
+        >
+          Menu
+        </button>
+        <nav
+          id="mobile-nav"
+          className={`nav-links${isMenuOpen ? " open" : ""}`}
+          role="tablist"
+          aria-label="Site sections"
+        >
           {tabs.map((tab) => (
             <button
               key={tab.id}
@@ -303,6 +323,14 @@ export default function Home() {
           Schedule Red Team
         </button>
       </header>
+      {isMenuOpen ? (
+        <button
+          className="nav-scrim"
+          type="button"
+          aria-hidden="true"
+          onClick={() => setIsMenuOpen(false)}
+        />
+      ) : null}
 
       <main className="main">
         <section
