@@ -387,31 +387,43 @@ export default function Home() {
                   <p className="panel-title">Red team findings</p>
                   <span className="panel-subtitle">Last 7 days of attack runs</span>
                 </div>
-                <span className="live-dot">Live</span>
+                <span className="live-dot">
+                  <span className="live-ring" />
+                  Live
+                </span>
               </div>
               <ul className="risk-list">
                 {riskSignals.map((item) => (
                   <li key={item.label} className="risk-row">
                     <span className={`risk-pill ${item.tone}`}>{item.label}</span>
+                    <div className="risk-bar-wrap">
+                      <div
+                        className={`risk-bar risk-bar--${item.tone}`}
+                        style={{ width: `${item.score}%` }}
+                      />
+                    </div>
                     <span className="risk-score">{item.score}</span>
                   </li>
                 ))}
               </ul>
               <div className="panel-footer">
-                <span className="signal">+18 new findings</span>
+                <span className="signal">&#8679; 18 new findings</span>
                 <span className="signal muted">Updated 12 mins ago</span>
               </div>
             </div>
 
             <div className="panel-card alt">
-              <h4>Adversarial pulse</h4>
+              <div className="alt-header">
+                <h4>Adversarial pulse</h4>
+                <span className="alt-badge">Active</span>
+              </div>
               <p>
-                We combine human red teams with automated attack suites to
-                pressure-test your LLM product surface.
+                Human red teams + automated attack suites pressure-testing your
+                LLM product surface around the clock.
               </p>
               <div className="mini-grid">
-                {intel.map((item) => (
-                  <div key={item.label} className="mini-card">
+                {intel.map((item, i) => (
+                  <div key={item.label} className={`mini-card mini-card--${i}`}>
                     <span>{item.label}</span>
                     <strong>{item.value}</strong>
                   </div>
