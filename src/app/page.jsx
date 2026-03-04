@@ -291,8 +291,9 @@ export default function Home() {
           aria-expanded={isMenuOpen}
           aria-controls="mobile-nav"
           onClick={toggleMenu}
+          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
         >
-          Menu
+          <span aria-hidden="true">{isMenuOpen ? "✕" : "≡"}</span>
         </button>
         <nav
           id="mobile-nav"
@@ -714,6 +715,19 @@ export default function Home() {
           </form>
         </section>
       </main>
+
+      <nav className="mobile-bottom-nav" aria-label="Mobile navigation">
+        {tabs.map((tab) => (
+          <button
+            key={tab.id}
+            className={activeTab === tab.id ? "active" : ""}
+            type="button"
+            onClick={() => activateTab(tab.id)}
+          >
+            <span className="tab-label">{tab.label}</span>
+          </button>
+        ))}
+      </nav>
 
       <footer className="footer" ref={footerRef}>
         <div>
