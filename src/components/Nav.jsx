@@ -25,7 +25,7 @@ export default function Nav() {
   return (
     <nav className="nav" aria-label="Primary">
       <a href="#top" className="brand" onClick={() => setOpen(false)}>
-        <Logo size={40} id="nav-rb" />
+        <Logo size={32} id="nav-rb" />
         <span className="brand-name">SODHAK</span>
         <span className="brand-badge">RT/26</span>
       </a>
