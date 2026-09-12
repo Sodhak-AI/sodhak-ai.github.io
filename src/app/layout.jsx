@@ -1,9 +1,9 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "Sodhak AI - LLM Red Teaming",
+  title: "Sodhak AI — LLM Red Teaming",
   description:
-    "Sodhak AI runs adversarial LLM red teaming to uncover jailbreaks, data leakage, and unsafe tool behavior.",
+    "Human adversaries and automated attack suites against your prompts, tools, and retrieval stack. A prioritized, retested fix list in days.",
 };
 
 export default function RootLayout({ children }) {
@@ -11,7 +11,17 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head>
         <meta name="color-scheme" content="dark" />
-        <meta name="theme-color" content="#06090d" />
+        <meta name="theme-color" content="#06080b" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+          rel="stylesheet"
+        />
       </head>
       <body>{children}</body>
     </html>
