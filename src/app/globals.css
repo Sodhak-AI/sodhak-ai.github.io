@@ -1034,7 +1034,7 @@ textarea:focus-visible {
 .footer-row {
   max-width: var(--container);
   margin: 0 auto;
-  padding: 24px var(--gutter) 0;
+  padding: 24px var(--gutter);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1065,19 +1065,6 @@ textarea:focus-visible {
 
 .footer-links a:hover {
   color: var(--text);
-}
-
-.footer-wordmark {
-  font-size: clamp(32px, 5vw, 64px);
-  font-weight: 700;
-  letter-spacing: -0.05em;
-  line-height: 1.1;
-  text-align: center;
-  color: transparent;
-  -webkit-text-stroke: 1px var(--line-2);
-  user-select: none;
-  margin: 16px 0 0;
-  padding: 0 var(--gutter) 24px;
 }
 
 /* Responsive */

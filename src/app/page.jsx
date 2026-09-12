@@ -315,7 +315,7 @@ export default function Home() {
         <div className="footer-row">
           <div className="footer-brand">
             <Logo size={20} id="footer-rb" />
-            <span>LLM RED TEAMING · © 2026</span>
+            <span>SODHAK · © 2026</span>
           </div>
           <div className="footer-links">
             <a href="#coverage">COVERAGE</a>
@@ -323,9 +323,6 @@ export default function Home() {
             <a href="#method">METHOD</a>
             <a href="#contact">CONTACT</a>
           </div>
-        </div>
-        <div className="footer-wordmark" aria-hidden="true">
-          SODHAK
         </div>
       </footer>
     </div>
