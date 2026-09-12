@@ -1,4 +1,5 @@
 import "./globals.css";
+import AnimatedFavicon from "../components/AnimatedFavicon";
 
 export const metadata = {
   title: "Sodhak AI — LLM Red Teaming",
@@ -23,7 +24,10 @@ export default function RootLayout({ children }) {
           rel="stylesheet"
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <AnimatedFavicon />
+        {children}
+      </body>
     </html>
   );
 }
