@@ -1,4 +1,4 @@
-/* SODHAK AI site: hero finding alerts, product tour tabs and the "Try it" inspector. No dependencies. */
+/* SODHAK AI site: scroll effects, product tour tabs and the "Try it" inspector. The 3D hero is scene.js. */
 (function () {
   "use strict";
 
@@ -14,48 +14,23 @@
     return esc(s).replace(/\[\[(.+?)\]\]/g, "<mark>$1</mark>");
   }
 
-  /* ── Hero: finding alerts appearing over the dashboard screenshot ────── */
-  var ALERTS = [
-    { sev: "block", title: "AWS secret key in prompt", meta: "claude_code · priya.n · payments-api" },
-    { sev: "redact", title: "Customer PAN removed before sending", meta: "copilot · arjun.k · 1 item" },
-    { sev: "block", title: "Prompt injection in retrieved document", meta: "support-agent · zendesk ticket 88412" },
-    { sev: "redact", title: "Email and phone redacted", meta: "chatgpt · meera.s · 2 items" },
-    { sev: "block", title: "Database password in prompt", meta: "cursor · dev.r · infra-tools" },
-  ];
-  var SEV = { block: "Blocked", redact: "Redacted" };
-  var box = document.getElementById("toasts");
-
-  function toastEl(a) {
-    var el = document.createElement("div");
-    el.className = "toast";
-    el.innerHTML = '<span class="toast__sev toast__sev--' + a.sev + '">' + SEV[a.sev] + "</span>" +
-      '<span class="toast__title">' + esc(a.title) + '</span><span class="toast__meta">' + esc(a.meta) + "</span>";
-    return el;
-  }
-
-  if (box) {
-    var max = window.innerWidth < 640 ? 2 : 3;
-    if (reduceMotion) {
-      ALERTS.slice(0, max).forEach(function (a) { box.appendChild(toastEl(a)); });
-    } else {
-      var n = 0, visible = true;
-      if ("IntersectionObserver" in window) {
-        new IntersectionObserver(function (e) { visible = e[0].isIntersecting; }).observe(box.parentNode);
-      }
-      var push = function () {
-        if (visible && !document.hidden) {
-          box.appendChild(toastEl(ALERTS[n++ % ALERTS.length]));
-          if (box.children.length > max) {
-            var old = box.firstElementChild;
-            old.classList.add("is-out");
-            setTimeout(function () { old.remove(); }, 340);
-          }
-        }
-        setTimeout(push, 2600);
-      };
-      setTimeout(push, 900);
+  /* ── Nav turns solid once past the hero; product screen straightens as it scrolls in ── */
+  var nav = document.querySelector(".nav");
+  var screen = document.getElementById("screen");
+  var ticking = false;
+  function onScroll() {
+    ticking = false;
+    if (nav) nav.classList.toggle("is-solid", window.scrollY > window.innerHeight * 0.6);
+    if (screen && !reduceMotion) {
+      var r = screen.getBoundingClientRect();
+      var p = (window.innerHeight - r.top) / (window.innerHeight * 0.75);   // 0 entering, 1 settled
+      p = Math.max(0, Math.min(1, p));
+      screen.style.setProperty("--tilt", (1 - p).toFixed(3));
     }
   }
+  window.addEventListener("scroll", function () { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+  window.addEventListener("resize", onScroll);
+  onScroll();
 
   /* ── Product tour tabs ─────────────────────────────────────────────── */
   var VIEWS = {
